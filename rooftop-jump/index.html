@@ -49,7 +49,7 @@ footer{max-width:760px;margin:0 auto;padding:0 22px 50px;font-size:14px;color:va
 <h2>What you need</h2>
 <div class="box"><table>
 <tr><th>Item</th><th>Used here</th></tr>
-<tr><td>GPU</td><td>32GB-class card (RTX 5000 Ada 32GB here). No card? Rent one by the hour on a cloud GPU.</td></tr>
+<tr><td>GPU</td><td>32GB-class card (RTX 5000 Ada 32GB here). No card? <a href="#cloud">Rent one for 10 minutes</a>.</td></tr>
 <tr><td>Disk</td><td>About 52GB for the reference-mode models</td></tr>
 <tr><td>Software</td><td>Blender 5.2, ComfyUI 0.38 with the MiniMax H3 templates. Both free.</td></tr>
 <tr><td>Images</td><td>Any image model that accepts reference images (character sheet, first frame, style)</td></tr>
@@ -81,6 +81,35 @@ footer{max-width:760px;margin:0 auto;padding:0 22px 50px;font-size:14px;color:va
 
 <h2>Step 5. Render and check</h2>
 <p>Run it once. On a 32GB card it takes about 10 minutes. Check the landing frame against your previz. Landed early? Move the landing key in Blender and the seconds in the prompt together, then rerun. Change one thing at a time and log it.</p>
+
+<h2 id="cloud">No 32GB card? Rent one for 10 minutes</h2>
+<p>ComfyUI doesn't care whose GPU it runs on. Rent a 32GB card for the render, download your video, then switch it off.</p>
+<div class="box"><table>
+<tr><th>#</th><th>What you do</th><th>Time</th></tr>
+<tr><td>1</td><td>On RunPod or Vast.ai, rent a 32GB-class GPU (RTX 5090 or bigger). Pick a ComfyUI template if one is offered. Add about 60GB of storage so the models stay.</td><td>5 min</td></tr>
+<tr><td>2</td><td>Download the four model files below into the pod's ComfyUI models folders.</td><td>15-30 min, once</td></tr>
+<tr><td>3</td><td>Upload the previz video and the three reference images, then load the workflow (Step 4).</td><td>2 min</td></tr>
+<tr><td>4</td><td>Run, download the mp4, stop the pod. The bill stops with it.</td><td>10 min</td></tr>
+</table></div>
+<div class="box"><table>
+<tr><th>Model file (Hugging Face: Comfy-Org/MiniMax-H3)</th><th>Folder</th><th>Size</th></tr>
+<tr><td>minimax_h3_ref2va_pruned_int8_convrot.safetensors</td><td>diffusion_models</td><td>20.97 GB</td></tr>
+<tr><td>qwen3vl_32b_minimax_h3_int8_convrot.safetensors</td><td>text_encoders</td><td>27.14 GB</td></tr>
+<tr><td>minimax_h3_video_vae_int8_convrot.safetensors</td><td>vae</td><td>2.81 GB</td></tr>
+<tr><td>minimax_h3_audio_vae_fp32.safetensors</td><td>vae</td><td>0.61 GB</td></tr>
+</table></div>
+<p class="note">Cost per 5-second shot: about $0.08 (RTX 5090 from about $0.47/hr on Vast.ai) to $0.17 (RunPod Secure Cloud, $0.99/hr), plus about $6/month if you keep a 60GB volume. List prices we read on Oct 1, 2026. Rates change, so check before you rent.</p>
+
+<h2 id="stuck">Stuck? The six snags that stop most people</h2>
+<div class="box"><table>
+<tr><th>What you see</th><th>Why</th><th>Fix</th></tr>
+<tr><td>A model is missing from the loader list</td><td>Wrong folder, or added after ComfyUI started</td><td>Check diffusion_models, text_encoders and vae, then restart ComfyUI</td></tr>
+<tr><td>The MiniMax H3 template doesn't show</td><td>ComfyUI is out of date</td><td>Settings, About: below 0.30? Update</td></tr>
+<tr><td>Red outline on an input node</td><td>No file picked</td><td>Choose the file on each image and video node</td></tr>
+<tr><td>Memory error right after Run</td><td>Not enough VRAM or RAM</td><td>Keep 512 × 896, close other GPU apps. Under 32GB? <a href="#cloud">Rent one</a></td></tr>
+<tr><td>The result ignores your images</td><td>Turbo (4-step Lightning LoRA) is on</td><td>Turn it off and use 20 steps</td></tr>
+<tr><td>Length 120 throws an error</td><td>H3 only accepts certain lengths</td><td>Use 124, 141 or 158 frames</td></tr>
+</table></div>
 
 <a class="cta" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide">Download the free recipe</a>
 
