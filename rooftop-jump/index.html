@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lock Your AI Camera: Blender Previz to MiniMax H3 (Free Guide) | uclick</title>
+<meta name="description" content="Free guide: block a shot with gray boxes in Blender, then render that exact camera with MiniMax H3 in ComfyUI on your own GPU. Blend file, prompts and workflow included.">
+<meta property="og:title" content="Lock Your AI Camera: Blender Previz to MiniMax H3">
+<meta property="og:description" content="Your camera. Your timing. Locked. Free blend file, prompts and ComfyUI workflow.">
+<meta property="og:image" content="https://uclickai.github.io/rooftop-jump/img/final.jpg">
+<style>
+:root{--ink:#14161A;--sub:#5d5a55;--or:#F5A443;--bg:#F4F2EE}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:18px}
+header{background:var(--ink);color:#fff;padding:18px 24px}header a{color:#fff;text-decoration:none;font-weight:800;letter-spacing:-.5px}header span{color:var(--or)}
+main{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+h1{font-size:42px;line-height:1.1;letter-spacing:-1.5px;margin:0 0 14px}h2{font-size:28px;letter-spacing:-.8px;margin:48px 0 10px}
+.lead{font-size:21px;color:var(--sub)}.hl{color:#d97a1f}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.trio figure{margin:0}.trio img{width:100%;border-radius:14px;display:block}.trio figcaption{font-size:14px;text-align:center;color:var(--sub);margin-top:6px;font-weight:700}
+.box{background:#fff;border-radius:18px;padding:20px 24px;margin:18px 0;box-shadow:0 8px 20px rgba(40,30,20,.06)}
+.cta{display:block;text-align:center;background:var(--or);color:var(--ink);font-weight:800;text-decoration:none;border-radius:999px;padding:16px 24px;font-size:20px;margin:22px 0}
+.cta.dark{background:var(--ink);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:16px}td,th{text-align:left;padding:9px 10px;border-bottom:1px solid #e6e3dd;vertical-align:top}th{color:var(--sub);font-size:14px}
+code{background:#ece9e3;padding:2px 6px;border-radius:6px;font-size:15px}
+img.wide,video.wide{width:100%;border-radius:14px;display:block;margin:14px 0}
+.note{font-size:15px;color:var(--sub)}
+footer{max-width:760px;margin:0 auto;padding:0 22px 50px;font-size:14px;color:var(--sub)}
+@media(max-width:560px){h1{font-size:32px}.trio{gap:6px}}
+</style>
+</head>
+<body>
+<header><a href="../">u<span>click</span></a> &nbsp;·&nbsp; free AI video recipes</header>
+<main>
+<h1>Lock your AI camera:<br><span class="hl">Blender previz → MiniMax H3</span></h1>
+<p class="lead">Your camera. Your timing. Locked. Block one shot with gray boxes in Blender, then let MiniMax H3 in ComfyUI paint that exact shot on your own GPU. Prompts guess the camera. A blockout locks it.</p>
+
+<div class="trio">
+<figure><img src="img/previz.jpg" alt="Gray-box Blender previz"><figcaption>1. Gray-box previz</figcaption></figure>
+<figure><img src="img/render.jpg" alt="MiniMax H3 render"><figcaption>2. H3 render</figcaption></figure>
+<figure><img src="img/final.jpg" alt="Finished video frame"><figcaption>3. Finished cut</figcaption></figure>
+</div>
+
+<a class="cta" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide">Get the free files (blend · prompts · workflow)</a>
+
+<h2>What you will make</h2>
+<p>One continuous 5-second shot: a courier sprints across a rainy rooftop, leaps the gap, lands and turns to the city. The camera angle, the move and the landing frame all come from your Blender file, not from luck.</p>
+<video class="wide" src="img/split.mp4" autoplay muted loop playsinline></video>
+<p class="note">Left: Blender previz. Right: MiniMax H3 render from the same previz. AI-generated video.</p>
+
+<h2>What you need</h2>
+<div class="box"><table>
+<tr><th>Item</th><th>Used here</th></tr>
+<tr><td>GPU</td><td>32GB-class card (RTX 5000 Ada 32GB here). No card? Rent one by the hour on a cloud GPU.</td></tr>
+<tr><td>Disk</td><td>About 52GB for the reference-mode models</td></tr>
+<tr><td>Software</td><td>Blender 5.2, ComfyUI 0.38 with the MiniMax H3 templates. Both free.</td></tr>
+<tr><td>Images</td><td>Any image model that accepts reference images (character sheet, first frame, style)</td></tr>
+</table></div>
+
+<h2>Step 1. Block the shot in Blender</h2>
+<p>Open <code>01_blockout/scene.blend</code>. Boxes are the rooftops, an empty is the runner, and the camera tracks a target. Keys set the run, the leap and the landing. Scrub the timeline: this is your shot. Change the camera here, never in the prompt.</p>
+<p>Export the previz (512×896, 24 fps, 124 frames). The file <code>previs_512x896_124f.mp4</code> is already in the pack.</p>
+
+<h2>Step 2. Three reference images</h2>
+<img class="wide" src="img/character_sheet.jpg" alt="Character sheet">
+<p>A character sheet on a plain background, a first frame that matches previz frame 1, and a style image for the mood. The pack includes all three plus the image prompts that made them.</p>
+
+<h2>Step 3. The H3 prompt</h2>
+<p>Use the official six-slot format and write the timing in seconds that match your previz keys (leap, landing, turn). If the prompt and the previz disagree, the video follows the previz. The full prompt is in <code>03_prompts/h3_prompt.txt</code>.</p>
+
+<h2>Step 4. Load the workflow in ComfyUI</h2>
+<img class="wide" src="img/h3_images.jpg" alt="ComfyUI image loaders">
+<p>Drag <code>04_comfyui/rooftop_h3_ref2va_workflow.json</code> into ComfyUI. Load the images in order: Picture 1 character sheet, Picture 2 first frame, Picture 3 style. Load the previz video as the reference video.</p>
+<img class="wide" src="img/h3_settings.jpg" alt="ComfyUI H3 settings">
+<div class="box"><table>
+<tr><th>Setting</th><th>Value</th></tr>
+<tr><td>Model</td><td>MiniMax H3 Ref2VA (INT8)</td></tr>
+<tr><td>Size</td><td>512 × 896</td></tr>
+<tr><td>Length</td><td>124 frames at 24 fps</td></tr>
+<tr><td>Steps</td><td>20</td></tr>
+<tr><td>Seed</td><td>20261001 (fixed, so you can repeat the shot)</td></tr>
+</table></div>
+
+<h2>Step 5. Render and check</h2>
+<p>Run it once. On a 32GB card it takes about 10 minutes. Check the landing frame against your previz. Landed early? Move the landing key in Blender and the seconds in the prompt together, then rerun. Change one thing at a time and log it.</p>
+
+<a class="cta" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide">Download the free recipe</a>
+
+<h2>Want the whole film?</h2>
+<p>This guide is one shot. The full guide takes it to a finished 1080×1920 video: fixing a shot that missed, the first-frame guide node, extra cuts and dissolves, safe-zone captions, AI music and eight SFX layers, upscaling, and swapping in your own character or product. Cloud GPU route included.</p>
+<a class="cta dark" href="https://uclickai.gumroad.com/l/pick-the-angle?ref=guide">Pick the Angle. AI Paints It. (100-page PDF + every sample file)</a>
+</main>
+<footer>uclick · All characters, images and video on this page are AI-generated. MiniMax H3, ComfyUI and Blender are used under their own licenses.</footer>
+</body>
+</html>
