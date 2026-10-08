@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>uclick | Free AI video recipes: your camera, locked</title>
-<meta name="description" content="Free AI video recipes: copy my prompts and files, lock the shot, and make the exact camera angle you want.">
+<meta name="description" content="Free AI video recipes with supplied files, start steps and completion checks. Start with one rooftop shot.">
 <style>
 body{margin:0;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#F4F2EE;color:#14161A;line-height:1.6}
 header{background:#14161A;color:#fff;padding:44px 22px}header .w{max-width:760px;margin:0 auto}
@@ -27,7 +27,7 @@ footer{max-width:760px;margin:0 auto;padding:0 22px 40px;font-size:14px;color:#5
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://uclickai.com/img/og-home.jpg">
-<meta property="og:title" content="uclick | AI video prompts that hit your exact shot">
+<meta property="og:title" content="uclick | Start with one AI video shot">
 <!-- Google tag (GA4) with Consent Mode: analytics off by default in EEA/UK/CH until the visitor accepts -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -41,9 +41,9 @@ gtag('js',new Date());gtag('config','G-QQHNP9RY9Z');
 <body>
 <header><div class="w"><h1>u<span>click</span></h1><p>AI video, directed. You lock the camera in Blender. The AI paints it.</p></div></header>
 <main>
-<a class="card" href="rooftop-jump/">
+<a class="card" data-uc-event="recipe_guide_click" href="rooftop-jump/?utm_source=website&amp;utm_medium=home&amp;utm_campaign=r1_paid_pilot&amp;utm_content=recipe_card">
 <img src="rooftop-jump/img/final.jpg" alt="Rooftop Jump">
-<div><span class="tag">FREE RECIPE #1</span><h2>Make the AI hit your exact camera angle</h2><p>One 5-second rooftop jump. Every prompt and file I used, free.</p></div>
+<div><span class="tag">FREE RECIPE #1</span><h2>Build your first controlled AI camera shot</h2><p>One rooftop jump. Supplied files, a start guide and a completion checklist. Free.</p></div>
 </a>
 <a class="card" href="https://uclickai.gumroad.com/l/3d-idol-starter-kit?ref=hub">
 <img src="img/3d-kit.jpg" alt="Free recipe 2: 3D character">
@@ -66,5 +66,8 @@ We use a cookie to see which pages help people most. OK with that?
 </div>
 <script>
 (function(){try{if(localStorage.getItem('uc_consent'))return;var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||'');if(!/^(Europe|Atlantic\/(Reykjavik|Canary|Madeira|Azores))/.test(tz))return;var b=document.getElementById('uc-cookie');b.style.display='block';function set(v){localStorage.setItem('uc_consent',v);gtag('consent','update',{analytics_storage:v});b.style.display='none';}document.getElementById('uc-ok').onclick=function(){set('granted')};document.getElementById('uc-no').onclick=function(){set('denied')};}catch(e){}})();
-</script></body>
+</script><script>
+(function(){document.addEventListener('click',function(e){var a=e.target.closest('a[data-uc-event]');if(!a||typeof gtag!=='function')return;var u=new URL(a.href,location.href);gtag('event',a.dataset.ucEvent,{campaign:'r1_paid_pilot',placement:u.searchParams.get('utm_content')||'home_card',destination:u.hostname});});})();
+</script>
+</body>
 </html>
