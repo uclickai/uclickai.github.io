@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lock Your AI Camera: Blender Previz to MiniMax H3 (Free Guide) | uclick</title>
-<meta name="description" content="Free guide: lock your shot with gray boxes in Blender, then let the AI paint that exact camera. Every prompt and file included.">
-<meta property="og:title" content="Lock Your AI Camera: Blender Previz to MiniMax H3">
-<meta property="og:description" content="Your camera. Your timing. Locked. Every prompt and file, free.">
+<title>Start with One AI Shot: Free Rooftop Jump Recipe | uclick</title>
+<meta name="description" content="Try one supplied rooftop jump with Blender previz and MiniMax H3. Free files, clear start steps, a completion checklist, and a next step for a finished video.">
+<meta property="og:title" content="Start with One AI Shot: Free Rooftop Jump Recipe">
+<meta property="og:description" content="One supplied-input shot, its source files, a start guide and a completion checklist. Try the free recipe first.">
 <meta property="og:image" content="https://uclickai.com/rooftop-jump/img/final.jpg">
 <style>
 :root{--ink:#14161A;--sub:#5d5a55;--or:#F5A443;--bg:#F4F2EE}
@@ -39,93 +39,23 @@ gtag('js',new Date());gtag('config','G-QQHNP9RY9Z');
 <body>
 <header><a href="../">u<span>click</span></a> &nbsp;·&nbsp; free AI video recipes</header>
 <main>
-<h1>Lock your AI camera: <br><span class="hl">Blender previz → MiniMax H3</span></h1>
-<p class="lead">Your camera. Your timing. Locked. Block one shot with gray boxes in Blender, then let MiniMax H3 in ComfyUI paint that exact shot on your own GPU. Prompts guess the camera. A blockout locks it.</p>
-
-<div class="trio">
-<figure><img src="img/previz.jpg" alt="Gray-box Blender previz"><figcaption>1. Gray-box previz</figcaption></figure>
-<figure><img src="img/render.jpg" alt="MiniMax H3 render"><figcaption>2. H3 render</figcaption></figure>
-<figure><img src="img/final.jpg" alt="Finished video frame"><figcaption>3. Finished cut</figcaption></figure>
-</div>
-
-<a class="cta" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide">Get the free files (blend · prompts · workflow)</a>
-
-<h2>What you will make</h2>
-<p>One continuous 5-second shot: a courier sprints across a rainy rooftop, leaps the gap, lands and turns to the city. The camera angle, the move and the landing frame all come from your Blender file, not from luck.</p>
-<video class="wide" src="img/split.mp4" autoplay muted loop playsinline></video>
-<p class="note">Left: Blender previz. Right: MiniMax H3 render from the same previz.</p>
-
-<h2>What you need</h2>
-<div class="box"><table>
-<tr><th>Item</th><th>Used here</th></tr>
-<tr><td>GPU</td><td>32GB-class card (RTX 5000 Ada 32GB here). No card? <a href="#cloud">Rent one for 10 minutes</a>.</td></tr>
-<tr><td>Disk</td><td>About 52GB for the reference-mode models</td></tr>
-<tr><td>Software</td><td>Blender 5.2, ComfyUI 0.38 with the MiniMax H3 templates. Both free.</td></tr>
-<tr><td>Images</td><td>Any image model that accepts reference images (character sheet, first frame, style)</td></tr>
-</table></div>
-
-<h2>Step 1. Block the shot in Blender</h2>
-<p>Open <code>01_blockout/scene.blend</code>. Boxes are the rooftops, an empty is the runner, and the camera tracks a target. Keys set the run, the leap and the landing. Scrub the timeline: this is your shot. Change the camera here, never in the prompt.</p>
-<p>Export the previz (512×896, 24 fps, 124 frames). The file <code>previs_512x896_124f.mp4</code> is already in the pack.</p>
-
-<h2>Step 2. Three reference images</h2>
-<img class="wide" src="img/character_sheet.jpg" alt="Character sheet">
-<p>A character sheet on a plain background, a first frame that matches previz frame 1, and a style image for the mood. The pack includes all three plus the image prompts that made them.</p>
-
-<h2>Step 3. The H3 prompt</h2>
-<p>Use the official six-slot format and write the timing in seconds that match your previz keys (leap, landing, turn). If the prompt and the previz disagree, the video follows the previz. The full prompt is in <code>03_prompts/h3_prompt.txt</code>.</p>
-
-<h2>Step 4. Load the workflow in ComfyUI</h2>
-<img class="wide" src="img/h3_images.jpg" alt="ComfyUI image loaders">
-<p>Drag <code>04_comfyui/rooftop_h3_ref2va_workflow.json</code> into ComfyUI. Load the images in order: Picture 1 character sheet, Picture 2 first frame, Picture 3 style. Load the previz video as the reference video.</p>
-<img class="wide" src="img/h3_settings.jpg" alt="ComfyUI H3 settings">
-<div class="box"><table>
-<tr><th>Setting</th><th>Value</th></tr>
-<tr><td>Model</td><td>MiniMax H3 Ref2VA (INT8)</td></tr>
-<tr><td>Size</td><td>512 × 896</td></tr>
-<tr><td>Length</td><td>124 frames at 24 fps</td></tr>
-<tr><td>Steps</td><td>20</td></tr>
-<tr><td>Seed</td><td>20261001 (fixed, so you can repeat the shot)</td></tr>
-</table></div>
-
-<h2>Step 5. Render and check</h2>
-<p>Run it once. On a 32GB card it takes about 10 minutes. Check the landing frame against your previz. Landed early? Move the landing key in Blender and the seconds in the prompt together, then rerun. Change one thing at a time and log it.</p>
-
-<h2 id="cloud">No 32GB card? Rent one for 10 minutes</h2>
-<p>ComfyUI doesn't care whose GPU it runs on. Rent a 32GB card for the render, download your video, then switch it off.</p>
-<div class="box"><table>
-<tr><th>#</th><th>What you do</th><th>Time</th></tr>
-<tr><td>1</td><td>On RunPod or <a href="https://cloud.vast.ai/?ref_id=726067" target="_blank" rel="sponsored noopener">Vast.ai</a> (my referral link, same price for you), rent a 32GB-class GPU (RTX 5090 or bigger). Pick a ComfyUI template if one is offered. Add about 60GB of storage so the models stay.</td><td>5 min</td></tr>
-<tr><td>2</td><td>Download the four model files below into the pod's ComfyUI models folders.</td><td>15-30 min, once</td></tr>
-<tr><td>3</td><td>Upload the previz video and the three reference images, then load the workflow (Step 4).</td><td>2 min</td></tr>
-<tr><td>4</td><td>Run, download the mp4, stop the pod. The bill stops with it.</td><td>10 min</td></tr>
-</table></div>
-<div class="box"><table>
-<tr><th>Model file (Hugging Face: Comfy-Org/MiniMax-H3)</th><th>Folder</th><th>Size</th></tr>
-<tr><td>minimax_h3_ref2va_pruned_int8_convrot.safetensors</td><td>diffusion_models</td><td>20.97 GB</td></tr>
-<tr><td>qwen3vl_32b_minimax_h3_int8_convrot.safetensors</td><td>text_encoders</td><td>27.14 GB</td></tr>
-<tr><td>minimax_h3_video_vae_int8_convrot.safetensors</td><td>vae</td><td>2.81 GB</td></tr>
-<tr><td>minimax_h3_audio_vae_fp32.safetensors</td><td>vae</td><td>0.61 GB</td></tr>
-</table></div>
-<p class="note">Cost per 5-second shot: about $0.08 (RTX 5090 from about $0.47/hr on Vast.ai) to $0.17 (RunPod Secure Cloud, $0.99/hr), plus about $6/month if you keep a 60GB volume. List prices we read on Oct 1, 2026. Rates change, so check before you rent.</p>
-
-<h2 id="stuck">Stuck? The six snags that stop most people</h2>
-<div class="box"><table>
-<tr><th>What you see</th><th>Why</th><th>Fix</th></tr>
-<tr><td>A model is missing from the loader list</td><td>Wrong folder, or added after ComfyUI started</td><td>Check diffusion_models, text_encoders and vae, then restart ComfyUI</td></tr>
-<tr><td>The MiniMax H3 template doesn't show</td><td>ComfyUI is out of date</td><td>Open Settings → About. If it says below 0.30, update ComfyUI.</td></tr>
-<tr><td>Red outline on an input node</td><td>No file picked</td><td>Choose the file on each image and video node</td></tr>
-<tr><td>Memory error right after Run</td><td>Not enough VRAM or RAM</td><td>Keep 512 × 896, close other GPU apps. Under 32GB? <a href="#cloud">Rent one</a></td></tr>
-<tr><td>The result ignores your images</td><td>Turbo (4-step Lightning LoRA) is on</td><td>Turn it off and use 20 steps</td></tr>
-<tr><td>Length 120 throws an error</td><td>H3 only accepts certain lengths</td><td>Use 124, 141 or 158 frames</td></tr>
-</table></div>
-
-<a class="cta" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide">Download the free recipe</a>
-
-<h2>Want the finished video?</h2>
-<p>This guide is one shot. The book takes it all the way to a finished vertical video you can post: fixing a shot that missed, extra cuts, captions, music and sound, and swapping in your own character or product.</p>
-<a class="cta dark" href="https://uclickai.gumroad.com/l/pick-the-angle?ref=guide">Pick the Angle. AI Paints It. (100-page PDF + every sample file)</a>
-<p>Video tutorials: <a href="https://www.youtube.com/@uclickai">YouTube @uclickai</a> · More free recipes: <a href="https://uclickai.com/">uclickai.com</a></p>
+<h1>Stop guessing your AI camera.<br><span class="hl">Start with one shot.</span></h1>
+<p class="lead">Your AI shot keeps missing the angle you asked for? Here's my starting point: a simple Blender blockout, three reference images, and one H3 prompt. Try the supplied rooftop jump before changing anything.</p>
+<div class="trio"><figure><img src="img/previz.jpg" alt="Gray-box Blender previz"><figcaption>1. Block the shot</figcaption></figure><figure><img src="img/render.jpg" alt="MiniMax H3 render"><figcaption>2. Generate with H3</figcaption></figure><figure><img src="img/final.jpg" alt="Finished video frame"><figcaption>3. Compare the result</figcaption></figure></div>
+<a class="cta" data-uc-event="free_recipe_click" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide-r1v4&amp;utm_source=website&amp;utm_medium=guide&amp;utm_campaign=r1_paid_pilot&amp;utm_content=top_download">Get the free Rooftop Jump files</a>
+<p class="note">Free Recipe #1 · Blender scene, supplied references, prompts, API workflow, sample result, and a start guide with a completion checklist. Model weights are separate downloads.</p>
+<h2>First, see the shot</h2><p>One courier. One continuous rooftop jump. The supplied H3 input and result are 124 frames at 24 fps, about 5.17 seconds. Watch the camera, takeoff and landing, not just the finished look.</p><video class="wide" src="img/split.mp4" controls muted loop playsinline></video><p class="note">Left: Blender previz. Right: AI-generated H3 render from that reference. Your new output still needs checking.</p>
+<h2>Before you run it</h2><div class="box"><table><tr><th>Check</th><th>The documented route</th></tr><tr><td>Generation</td><td>ComfyUI with the local MiniMax H3 Ref2VA template and its model files. This is not a Higgsfield recipe or a hosted API template.</td></tr><tr><td>Hardware</td><td>The source setup uses a 32GB-class GPU. Check your available GPU and system memory before running.</td></tr><tr><td>Models and disk</td><td>The four README-listed model files total about 51.5GB. Leave more space for the app, downloads and outputs. Models and a complete verified dependency/hash inventory are not included.</td></tr><tr><td>First run</td><td>Use the supplied images and previz. You do not need to generate new images or edit Blender for this baseline.</td></tr></table></div><p>Unzip the download and open <code>START_HERE.md</code> first. Keep <code>COMPLETION_CHECKLIST.md</code> beside it.</p>
+<h2>1. Keep the supplied camera</h2><p>Watch <code>01_blockout/previs_512x896_124f.mp4</code>. Use this 124-frame file for H3, not the original 120-frame <code>previz_720x1280.mp4</code>. Open <code>01_blockout/scene.blend</code> only when you're ready to change the camera later.</p>
+<h2>2. Select the three references</h2><img class="wide" src="img/character_sheet.jpg" alt="Supplied courier character sheet"><div class="box"><table><tr><th>Input</th><th>File inside 02_reference_images</th></tr><tr><td>Picture 1</td><td><code>character_sheet.png</code></td></tr><tr><td>Picture 2</td><td><code>keyframe_first_512x896.png</code></td></tr><tr><td>Picture 3</td><td><code>style_last.png</code></td></tr></table></div><p>The character-sheet and first-frame instructions are in <code>03_prompts/image_prompts.md</code>. The original style-image prompt was not recovered. Use the supplied style image for this first run.</p>
+<h2>3. Use the local node template</h2><img class="wide" src="img/h3_images.jpg" alt="ComfyUI H3 reference image inputs"><p>In ComfyUI, open Templates, choose Video, and look for the local MiniMax H3 reference-to-video graph. The included <code>04_comfyui/rooftop_h3_ref2va_workflow.json</code> is an API-format graph, not a ready-to-drag visual editor layout. Use it as the node/settings reference.</p><p>Upload and select your own copies of the four input files. The graph's old <code>ch2/...</code> paths will not exist on your machine. <code>START_HERE.md</code> lists the input nodes and their order.</p>
+<h2>4. Keep the baseline settings</h2><p>Paste the full <code>03_prompts/h3_prompt.txt</code> into the reference-to-video node. Keep its timing and Picture 1 / 2 / 3 / Video 1 order.</p><img class="wide" src="img/h3_settings.jpg" alt="ComfyUI H3 baseline settings"><div class="box"><table><tr><th>Setting</th><th>Baseline</th></tr><tr><td>Size / length / output</td><td>512 × 896 / 124 frames / 24 fps</td></tr><tr><td>Steps / seed</td><td>20 / 20261001</td></tr><tr><td>Sampler / scheduler</td><td>res_multistep / simple</td></tr><tr><td>Denoise / reference size</td><td>1.0 / match</td></tr><tr><td>Turbo / Lightning LoRA</td><td>Off; not present in the supplied graph</td></tr></table></div><p>Run and save the MP4. Matching settings do not guarantee an identical shot on another installation.</p>
+<h2>5. Know when you're done</h2><div class="box"><ul><li>Your MP4 plays from start to finish, with sound.</li><li>You can see the sprint, jump, landing, rise and turn in order.</li><li>The camera follows the intended beats without a surprise cut or teleport.</li><li>The courier stays coherent through the full move.</li><li>You listened to the rain, steps and landing, and noted anything that does not fit.</li></ul></div><p>Tick the downloaded completion checklist. If something fails, write down the exact error or time in the clip. Change one thing at a time.</p>
+<h2 id="stuck">Stuck? Start with the symptom</h2><div class="box"><table><tr><th>What happened?</th><th>Next check</th></tr><tr><td>JSON will not open as an editor graph</td><td>Use the local visual template. The supplied JSON is API format.</td></tr><tr><td>A model or H3 node is missing</td><td>Check the model folders and compatible local template. Use START_HERE.md and the README model list.</td></tr><tr><td>Missing file or a ch2 path</td><td>Reselect all three images and the 124-frame video from your uploads.</td></tr><tr><td>Memory error</td><td>Keep the baseline size and close only your own unused GPU apps. Check memory requirements before retrying.</td></tr><tr><td>Wrong camera, landing or character</td><td>Compare with the supplied previz. Record the failure time and check reference order, prompt and settings.</td></tr><tr><td>Missing or wrong sound</td><td>Check the audio decode and CreateVideo nodes. Listen to the whole saved output.</td></tr></table></div><p>Reply to your recipe email with your tool, last completed step, exact symptom and an error screenshot or output. Keep private paths and credentials out of screenshots. The free kit does not include remote setup or a guaranteed repair for every installation.</p>
+<h2 id="cloud">Using a rented GPU?</h2><p>Set up the same local ComfyUI/H3 route. Allow for model download time, storage, app setup and the render, not just the finished clip's length. Check current rates and stop the machine when you're finished. The old README's rental prices are historical, not a current quote.</p>
+<a class="cta" data-uc-event="free_recipe_click" href="https://uclickai.gumroad.com/l/rooftop-jump-recipe?ref=guide-r1v4&amp;utm_source=website&amp;utm_medium=guide&amp;utm_campaign=r1_paid_pilot&amp;utm_content=bottom_download">Download the free files and checklist</a>
+<section id="uclick-next-step"><h2>Got one shot working? Make the finished video.</h2><p>You don't need the book to finish this free exercise. <strong>Pick the Angle. AI Paints It. ($25)</strong> is the next step if you want to plan more shots, adapt a character or product, fix a missed landing, and assemble a vertical video.</p><div class="box"><table><tr><th>Free Rooftop Jump</th><th>Pick the Angle, v1.2</th></tr><tr><td>One supplied-input shot, its source files, a start guide and a completion check.</td><td>A 100-page PDF plus companion samples: shot planning, Blender previz, available reference prompts, H3 generation, two landing-fix examples, extra cuts, captions, music/SFX and a 1080 × 1920 finish.</td></tr></table></div><p class="note">The paid pack does not include model weights, a complete verified model-hash inventory or the missing original style-image prompt. Try the documented setup with the free kit before buying.</p>
+<a class="cta dark" data-uc-event="paid_offer_click" href="https://uclickai.gumroad.com/l/pick-the-angle?ref=guide-r1v4&amp;utm_source=website&amp;utm_medium=guide&amp;utm_campaign=r1_paid_pilot&amp;utm_content=paid_comparison">See Pick the Angle · $25</a></section><p>Video tutorials: <a href="https://www.youtube.com/@uclickai">YouTube @uclickai</a> · <a href="https://uclickai.com/">More recipes</a></p>
 </main>
 <footer>uclick · <a href="/privacy/">Privacy</a></footer>
 <div id="uc-cookie" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#14161A;color:#fff;border-radius:14px;padding:14px 16px;font:15px/1.4 -apple-system,Segoe UI,Roboto,Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:99">
@@ -134,5 +64,11 @@ We use a cookie to see which pages help people most. OK with that?
 </div>
 <script>
 (function(){try{if(localStorage.getItem('uc_consent'))return;var tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||'');if(!/^(Europe|Atlantic\/(Reykjavik|Canary|Madeira|Azores))/.test(tz))return;var b=document.getElementById('uc-cookie');b.style.display='block';function set(v){localStorage.setItem('uc_consent',v);gtag('consent','update',{analytics_storage:v});b.style.display='none';}document.getElementById('uc-ok').onclick=function(){set('granted')};document.getElementById('uc-no').onclick=function(){set('denied')};}catch(e){}})();
-</script></body>
+</script><script>
+(function(){document.addEventListener('click',function(e){var a=e.target.closest('a[data-uc-event]');if(!a||typeof gtag!=='function')return;var u=new URL(a.href,location.href);gtag('event',a.dataset.ucEvent,{campaign:'r1_paid_pilot',placement:u.searchParams.get('utm_content')||'home_card',destination:u.hostname});});})();
+</script>
+<script>
+(function(){var p=new URLSearchParams(location.search),r=p.get('ref')||'',days=['0','2','5','8'],day=days.find(function(d){return r==='email-onboarding-'+d;});if(day===undefined)return;document.querySelectorAll('a[data-uc-event]').forEach(function(a){var u=new URL(a.href,location.href);u.searchParams.set('utm_source','kit');u.searchParams.set('utm_medium','email');u.searchParams.set('ref','email-d'+day+'-via-guide-r1v4');a.href=u.href;});})();
+</script>
+</body>
 </html>
